@@ -4,6 +4,8 @@ _class: lead
 paginate: true
 backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.jpg')
+footer: 林肯叔叔
+header: 
 ---
 
 # 第2章 Python语法基础，IPython和Jupyter Notebooks
@@ -218,6 +220,8 @@ In [3]: an<Tab>
 an_apple    and         an_example  any
 ```
 
+---
+
 在这个例子中，IPython呈现出了之前两个定义的变量和Python的关键字和内建的函数`any`。当然，你也可以补全任何对象的方法和属性：
 
 ```text
@@ -240,11 +244,15 @@ datetime.datetime      datetime.MINYEAR       datetime.timezone
 datetime.datetime_CAPI datetime.time          datetime.tzinfo
 ```
 
+---
+
 在Jupyter notebook和新版的IPython（5.0及以上），自动补全功能是下拉框的形式。
 
 > 笔记：注意，默认情况下，IPython会隐藏下划线开头的方法和属性，比如魔术方法和内部的“私有”方法和属性，以避免混乱的显示（和让新手迷惑！）这些也可以tab补全，但是你必须首先键入一个下划线才能看到它们。如果你喜欢总是在tab补全中看到这样的方法，你可以IPython配置中进行设置。可以在IPython文档中查找方法。
 
 除了补全命名、对象和模块属性，Tab还可以补全其它的。当输入看似文件路径时（即使是Python字符串），按下Tab也可以补全电脑上对应的文件信息：
+
+---
 
 ```text
 In [7]: datasets/movielens/<Tab>
@@ -258,11 +266,15 @@ datasets/movielens/ratings.dat   datasets/movielens/users.dat
 
 结合`%run`，tab补全可以节省许多键盘操作。
 
+---
+
 另外，tab补全可以补全函数的关键词参数（包括等于号=）。见图2-4。
 
 ![&#x56FE;2-4 Jupyter notebook&#x4E2D;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x51FD;&#x6570;&#x5173;&#x952E;&#x8BCD;](http://upload-images.jianshu.io/upload_images/7178691-8188b0386238c16a.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 后面会仔细地学习函数。
+
+---
 
 ### 自省
 
@@ -292,6 +304,8 @@ flush: whether to forcibly flush the stream.
 Type:      builtin_function_or_method
 ```
 
+---
+
 这可以作为对象的自省。如果对象是一个函数或实例方法，定义过的文档字符串，也会显示出信息。假设我们写了一个如下的函数：
 
 ```python
@@ -305,6 +319,9 @@ def add_numbers(a, b):
     """
     return a + b
 ```
+
+---
+
 
 然后使用?符号，就可以显示如下的文档字符串：
 
@@ -320,6 +337,9 @@ the_sum : type of arguments
 File:      <ipython-input-9-6a548a216e27>
 Type:      function
 ```
+
+---
+
 
 使用??会显示函数的源码：
 
@@ -340,6 +360,9 @@ File:      <ipython-input-9-6a548a216e27>
 Type:      function
 ```
 
+---
+
+
 ?还有一个用途，就是像Unix或Windows命令行一样搜索IPython的命名空间。字符与通配符结合可以匹配所有的名字。例如，我们可以获得所有包含load的顶级NumPy命名空间：
 
 ```python
@@ -350,6 +373,9 @@ np.loads
 np.loadtxt
 np.pkgload
 ```
+
+---
+
 
 ### %run命令
 
@@ -366,6 +392,9 @@ c = 7.5
 result = f(a, b, c)
 ```
 
+---
+
+
 可以如下运行：
 
 ```python
@@ -381,6 +410,10 @@ Out [15]: 7.5
 In [16]: result
 Out[16]: 1.4666666666666666
 ```
+
+---
+
+
 
 如果一个Python脚本需要命令行参数（在`sys.argv`中查找），可以在文件路径之后传递，就像在命令行上运行一样。
 
@@ -400,11 +433,17 @@ Out[16]: 1.4666666666666666
     result = f(a, b, c)
 ```
 
+---
+
+
 ### 中断运行的代码
 
 代码运行时按Ctrl-C，无论是%run或长时间运行命令，都会导致`KeyboardInterrupt`。这会导致几乎所有Python程序立即停止，除非一些特殊情况。
 
 > 警告：当Python代码调用了一些编译的扩展模块，按Ctrl-C不一定将执行的程序立即停止。在这种情况下，你必须等待，直到控制返回Python解释器，或者在更糟糕的情况下强制终止Python进程。
+
+---
+
 
 ### 从剪贴板执行程序
 
@@ -419,6 +458,9 @@ if x > 5:
     y = 8
 ```
 
+---
+
+
 最简单的方法是使用`%paste`和`%cpaste`函数。`%paste`可以直接运行剪贴板中的代码：
 
 ```python
@@ -431,6 +473,9 @@ if x > 5:
     y = 8
 ## -- End pasted text --
 ```
+
+---
+
 
 `%cpaste`功能类似，但会给出一条提示：
 
@@ -448,15 +493,24 @@ Pasting code; enter '--' alone on the line to stop or use Ctrl-D.
 
 使用`%cpaste`，你可以粘贴任意多的代码再运行。你可能想在运行前，先看看代码。如果粘贴了错误的代码，可以用Ctrl-C中断。
 
+---
+
+
 ### 键盘快捷键
 
 IPython有许多键盘快捷键进行导航提示（类似Emacs文本编辑器或UNIX bash Shell）和交互shell的历史命令。表2-1总结了常见的快捷键。图2-5展示了一部分，如移动光标。
 
 ![&#x56FE;2-5 IPython shell&#x4E2D;&#x4E00;&#x4E9B;&#x5FEB;&#x6377;&#x952E;&#x7684;&#x8BF4;&#x660E;](http://upload-images.jianshu.io/upload_images/7178691-9ed3866ea25c11f8.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
+---
+
+
 ![&#x8868;2-1 IPython&#x7684;&#x6807;&#x51C6;&#x5FEB;&#x6377;&#x952E;](http://upload-images.jianshu.io/upload_images/7178691-e179f5ea00e50691.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 Jupyter notebooks有另外一套庞大的快捷键。因为它的快捷键比IPython的变化快，建议你参阅Jupyter notebook的帮助文档。
+
+---
+
 
 ### 魔术命令
 
@@ -470,6 +524,9 @@ In [20]: %timeit np.dot(a, a)
 ```
 
 魔术命令可以被看做IPython中运行的命令行。许多魔术命令有“命令行”选项，可以通过？查看：
+
+---
+
 
 ```text
 In [21]: %debug?
@@ -506,6 +563,9 @@ optional arguments:
                         Set break point at LINE in FILE.
 ```
 
+---
+
+
 魔术函数默认可以不用百分号，只要没有变量和函数名相同。这个特点被称为“自动魔术”，可以用`%automagic`打开或关闭。
 
 一些魔术函数与Python函数很像，它的结果可以赋值给一个变量：
@@ -520,9 +580,17 @@ In [24]: foo
 Out[24]: '/home/wesm/code/pydata-book'
 ```
 
+---
+
+
 IPython的文档可以在shell中打开，我建议你用`%quickref`或`%magic`学习下所有特殊命令。表2-2列出了一些可以提高生产率的交互计算和Python开发的IPython指令。
 
 ![&#x8868;2-2 &#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x7684;IPython&#x9B54;&#x672F;&#x547D;&#x4EE4;](http://upload-images.jianshu.io/upload_images/7178691-c72b11add9b8ccf8.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
+
+
+---
+
+
 
 ### 集成Matplotlib
 
@@ -530,10 +598,14 @@ IPython在分析计算领域能够流行的原因之一是它非常好的集成�
 
 在IPython shell中，运行`%matplotlib`可以进行设置，可以创建多个绘图窗口，而不会干扰控制台session：
 
+
 ```text
 In [26]: %matplotlib
 Using matplotlib backend: Qt4Agg
 ```
+
+---
+
 
 在JUpyter中，命令有所不同（图2-6）：
 
@@ -543,9 +615,15 @@ In [26]: %matplotlib inline
 
 ![&#x56FE;2-6 Jupyter&#x884C;&#x5185;matplotlib&#x4F5C;&#x56FE;](http://upload-images.jianshu.io/upload_images/7178691-3ab3738a92a15486.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
+---
+
+
 ## 2.3 Python语法基础
 
 在本节中，我将概述基本的Python概念和语言机制。在下一章，我将详细介绍Python的数据结构、函数和其它内建工具。
+
+---
+
 
 ### 语言的语义
 
@@ -554,6 +632,9 @@ Python的语言设计强调的是可读性、简洁和清晰。有些人称Pytho
 ### 使用缩进，而不是括号
 
 Python使用空白字符（tab和空格）来组织代码，而不是像其它语言，比如R、C++、JAVA和Perl那样使用括号。看一个排序算法的`for`循环：
+
+---
+
 
 ```python
 for x in array:
@@ -565,6 +646,9 @@ for x in array:
 
 冒号标志着缩进代码块的开始，冒号之后的所有代码的缩进量必须相同，直到代码块结束。不管是否喜欢这种形式，使用空白符是Python程序员开发的一部分，在我看来，这可以让python的代码可读性大大优于其它语言。虽然期初看起来很奇怪，经过一段时间，你就能适应了。
 
+---
+
+
 > 笔记：我强烈建议你使用四个空格作为默认的缩进，可以使用tab代替四个空格。许多文本编辑器的设置是使用制表位替代空格。某些人使用tabs或不同数目的空格数，常见的是使用两个空格。大多数情况下，四个空格是大多数人采用的方法，因此建议你也这样做。
 
 你应该已经看到，Python的语句不需要用分号结尾。但是，分号却可以用来给同在一行的语句切分：
@@ -575,9 +659,15 @@ a = 5; b = 6; c = 7
 
 Python不建议将多条语句放到一行，这会降低代码的可读性。
 
+---
+
+
 ### 万物皆对象
 
 Python语言的一个重要特性就是它的对象模型的一致性。每个数字、字符串、数据结构、函数、类、模块等等，都是在Python解释器的自有“盒子”内，它被认为是Python对象。每个对象都有类型（例如，字符串或函数）和内部数据。在实际中，这可以让语言非常灵活，因为函数也可以被当做对象使用。
+
+---
+
 
 ### 注释
 
@@ -598,6 +688,9 @@ for line in file_handle:
 print("Reached this line")  # Simple status report
 ```
 
+---
+
+
 ### 函数和对象方法调用
 
 你可以用圆括号调用函数，传递零个或几个参数，或者将返回值给一个变量：
@@ -613,6 +706,9 @@ g()
 obj.some_method(x, y, z)
 ```
 
+---
+
+
 函数可以使用位置和关键词参数：
 
 ```python
@@ -620,6 +716,9 @@ result = f(a, b, c, d=5, e='foo')
 ```
 
 后面会有更多介绍。
+
+---
+
 
 ### 变量和参数传递
 
@@ -634,6 +733,9 @@ In [8]: a = [1, 2, 3]
 ```python
 In [9]: b = a
 ```
+---
+
+
 
 在有些方法中，这个赋值会将数据\[1, 2, 3\]也复制。在Python中，a和b实际上是同一个对象，即原有列表\[1, 2, 3\]（见图2-7）。你可以在a中添加一个元素，然后检查b：
 
@@ -646,6 +748,9 @@ Out[11]: [1, 2, 3, 4]
 
 ![&#x56FE;2-7 &#x5BF9;&#x540C;&#x4E00;&#x5BF9;&#x8C61;&#x7684;&#x53CC;&#x91CD;&#x5F15;&#x7528;](http://upload-images.jianshu.io/upload_images/7178691-3e3a8c6b9c5040fc.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
+---
+
+
 理解Python的引用的含义，数据是何时、如何、为何复制的，是非常重要的。尤其是当你用Python处理大的数据集时。
 
 > 笔记：赋值也被称作绑定，我们是把一个名字绑定给一个对象。变量名有时可能被称为绑定变量。
@@ -657,6 +762,11 @@ def append_element(some_list, element):
     some_list.append(element)
 ```
 
+
+---
+
+
+
 然后有：
 
 ```python
@@ -667,6 +777,9 @@ In [28]: append_element(data, 4)
 In [29]: data
 Out[29]: [1, 2, 3, 4]
 ```
+
+---
+
 
 ### 动态引用，强类型
 
@@ -684,6 +797,9 @@ In [15]: type(a)
 Out[15]: str
 ```
 
+---
+
+
 变量是在特殊命名空间中的对象的名字，类型信息保存在对象自身中。一些人可能会说Python不是“类型化语言”。这是不正确的，看下面的例子：
 
 ```text
@@ -695,7 +811,13 @@ TypeError                                 Traceback (most recent call last)
 TypeError: must be str, not int
 ```
 
+---
+
+
 在某些语言中，例如Visual Basic，字符串‘5’可能被默许转换（或投射）为整数，因此会产生10。但在其它语言中，例如JavaScript，整数5会被投射成字符串，结果是联结字符串‘55’。在这个方面，Python被认为是强类型化语言，意味着每个对象都有明确的类型（或类），默许转换只会发生在特定的情况下，例如：
+
+---
+
 
 ```text
 In [17]: a = 4.5
@@ -710,6 +832,9 @@ In [20]: a / b
 Out[20]: 2.25
 ```
 
+---
+
+
 知道对象的类型很重要，最好能让函数可以处理多种类型的输入。你可以用`isinstance`函数检查对象是某个类型的实例：
 
 ```text
@@ -718,6 +843,9 @@ In [21]: a = 5
 In [22]: isinstance(a, int)
 Out[22]: True
 ```
+
+---
+
 
 `isinstance`可以用类型元组，检查对象的类型是否在元组中：
 
@@ -730,6 +858,9 @@ Out[24]: True
 In [25]: isinstance(b, (int, float))
 Out[25]: True
 ```
+
+---
+
 
 ### 属性和方法
 
@@ -749,6 +880,9 @@ a.expandtabs  a.isspace     a.replace     a.splitlines
 a.find        a.istitle     a.rfind       a.startswith
 ```
 
+---
+
+
 也可以用`getattr`函数，通过名字访问属性和方法：
 
 ```text
@@ -757,6 +891,9 @@ Out[27]: <function str.split>
 ```
 
 在其它语言中，访问对象的名字通常称作“反射”。本书不会大量使用`getattr`函数和相关的`hasattr`和`setattr`函数，使用这些函数可以高效编写原生的、可重复使用的代码。
+
+---
+
 
 ### 鸭子类型
 
@@ -771,6 +908,9 @@ def isiterable(obj):
         return False
 ```
 
+---
+
+
 这个函数会返回字符串以及大多数Python集合类型为`True`：
 
 ```text
@@ -784,12 +924,18 @@ In [31]: isiterable(5)
 Out[31]: False
 ```
 
+---
+
+
 我总是用这个功能编写可以接受多种输入类型的函数。常见的例子是编写一个函数可以接受任意类型的序列（list、tuple、ndarray）或是迭代器。你可先检验对象是否是列表（或是NUmPy数组），如果不是的话，将其转变成列表：
 
 ```python
 if not isinstance(x, list) and isiterable(x):
     x = list(x)
 ```
+
+---
+
 
 ### 引入
 
@@ -806,6 +952,9 @@ def g(a, b):
     return a + b
 ```
 
+---
+
+
 如果想从同目录下的另一个文件访问`some_module.py`中定义的变量和函数，可以：
 
 ```python
@@ -821,6 +970,9 @@ from some_module import f, g, PI
 result = g(5, PI)
 ```
 
+---
+
+
 使用`as`关键词，你可以给引入起不同的变量名：
 
 ```python
@@ -830,6 +982,9 @@ from some_module import PI as pi, g as gf
 r1 = sm.f(pi)
 r2 = gf(6, pi)
 ```
+
+---
+
 
 ### 二元运算符和比较运算符
 
@@ -848,6 +1003,14 @@ Out[34]: False
 
 表2-3列出了所有的二元运算符。
 
+---
+
+
+![&#x8868;2-3 &#x4E8C;&#x5143;&#x8FD0;&#x7B97;&#x7B26;](http://upload-images.jianshu.io/upload_images/7178691-9fb5f25b33166acf.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
+
+---
+
+
 要判断两个引用是否指向同一个对象，可以使用`is`方法。`is not`可以判断两个对象是不同的：
 
 ```python
@@ -863,6 +1026,9 @@ Out[38]: True
 In [39]: a is not c
 Out[39]: True
 ```
+
+---
+
 
 因为`list`总是创建一个新的Python列表（即复制），我们可以断定c是不同于a的。使用`is`比较与`==`运算符不同，如下：
 
@@ -880,7 +1046,8 @@ In [42]: a is None
 Out[42]: True
 ```
 
-![&#x8868;2-3 &#x4E8C;&#x5143;&#x8FD0;&#x7B97;&#x7B26;](http://upload-images.jianshu.io/upload_images/7178691-9fb5f25b33166acf.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
+---
+
 
 ### 可变与不可变对象
 
@@ -894,6 +1061,9 @@ In [44]: a_list[2] = (3, 4)
 In [45]: a_list
 Out[45]: ['foo', 2, (3, 4)]
 ```
+
+---
+
 
 其它的，例如字符串和元组，是不可变的：
 
@@ -910,11 +1080,17 @@ TypeError: 'tuple' object does not support item assignment
 
 记住，可以修改一个对象并不意味就要修改它。这被称为副作用。例如，当写一个函数，任何副作用都要在文档或注释中写明。如果可能的话，我推荐避免副作用，采用不可变的方式，即使要用到可变对象。
 
+---
+
+
 ### 标量类型
 
 Python的标准库中有一些内建的类型，用于处理数值数据、字符串、布尔值，和日期时间。这些单值类型被称为标量类型，本书中称其为标量。表2-4列出了主要的标量。日期和时间处理会另外讨论，因为它们是标准库的`datetime`模块提供的。
 
 ![&#x8868;2-4 Python&#x7684;&#x6807;&#x91CF;](http://upload-images.jianshu.io/upload_images/7178691-27a30ac3e7d262a1.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
+
+---
+
 
 ### 数值类型
 
@@ -926,6 +1102,9 @@ In [48]: ival = 17239871
 In [49]: ival ** 6
 Out[49]: 26254519291092456596965462913230729701102721
 ```
+
+---
+
 
 浮点数使用Python的`float`类型。每个数都是双精度（64位）的值。也可以用科学计数法表示：
 
@@ -942,12 +1121,18 @@ In [52]: 3 / 2
 Out[52]: 1.5
 ```
 
+---
+
+
 要获得C-风格的整除（去掉小数部分），可以使用底除运算符//：
 
 ```python
 In [53]: 3 // 2
 Out[53]: 1
 ```
+
+---
+
 
 ### 字符串
 
@@ -967,12 +1152,18 @@ spans multiple lines
 """
 ```
 
+---
+
+
 字符串`c`实际包含四行文本，"""后面和lines后面的换行符。可以用`count`方法计算`c`中的新的行：
 
 ```python
 In [55]: c.count('\n')
 Out[55]: 3
 ```
+
+---
+
 
 Python的字符串是不可变的，不能修改字符串：
 
@@ -992,12 +1183,18 @@ In [59]: b
 Out[59]: 'this is a longer string'
 ```
 
+---
+
+
 经过以上的操作，变量`a`并没有被修改：
 
 ```python
 In [60]: a
 Out[60]: 'this is a string'
 ```
+
+---
+
 
 许多Python对象使用`str`函数可以被转化为字符串：
 
@@ -1009,6 +1206,9 @@ In [62]: s = str(a)
 In [63]: print(s)
 5.6
 ```
+
+---
+
 
 字符串是一个序列的Unicode字符，因此可以像其它序列，比如列表和元组（下一章会详细介绍两者）一样处理：
 
@@ -1024,6 +1224,9 @@ Out[66]: 'pyt'
 
 语法`s[:3]`被称作切片，适用于许多Python序列。后面会更详细的介绍，本书中用到很多切片。
 
+---
+
+
 反斜杠是转义字符，意思是它备用来表示特殊字符，比如换行符\n或Unicode字符。要写一个包含反斜杠的字符串，需要进行转义：
 
 ```python
@@ -1032,6 +1235,9 @@ In [67]: s = '12\\34'
 In [68]: print(s)
 12\34
 ```
+
+---
+
 
 如果字符串中包含许多反斜杠，但没有特殊字符，这样做就很麻烦。幸好，可以在字符串前面加一个r，表明字符就是它自身：
 
@@ -1044,6 +1250,9 @@ Out[70]: 'this\\has\\no\\special\\characters'
 
 r表示raw。
 
+---
+
+
 将两个字符串合并，会产生一个新的字符串：
 
 ```python
@@ -1054,6 +1263,9 @@ In [72]: b = 'and this is the second half'
 In [73]: a + b
 Out[73]: 'this is the first half and this is the second half'
 ```
+
+---
+
 
 字符串的模板化或格式化，是另一个重要的主题。Python 3拓展了此类的方法，这里只介绍一些。字符串对象有`format`方法，可以替换格式化的参数为字符串，产生一个新的字符串：
 
@@ -1067,6 +1279,9 @@ In [74]: template = '{0:.2f} {1:s} are worth US${2:d}'
 * `{1:s}`表示格式化第二个参数为字符串。
 * `{2:d}`表示格式化第三个参数为一个整数。
 
+---
+
+
 要替换参数为这些格式化的参数，我们传递`format`方法一个序列：
 
 ```python
@@ -1078,6 +1293,9 @@ Out[75]: '4.56 Argentine Pesos are worth US$1'
 
 这里概括介绍字符串处理，第8章的数据分析会详细介绍。
 
+---
+
+
 ### 字节和Unicode
 
 在Python 3及以上版本中，Unicode是一级的字符串类型，这样可以更一致的处理ASCII和Non-ASCII文本。在老的Python版本中，字符串都是字节，不使用Unicode编码。假如知道字符编码，可以将其转化为Unicode。看一个例子：
@@ -1088,6 +1306,9 @@ In [76]: val = "español"
 In [77]: val
 Out[77]: 'español'
 ```
+
+---
+
 
 可以用`encode`将这个Unicode字符串编码为UTF-8：
 
@@ -1108,6 +1329,9 @@ In [81]: val_utf8.decode('utf-8')
 Out[81]: 'español'
 ```
 
+---
+
+
 虽然UTF-8编码已经变成主流，但因为历史的原因，你仍然可能碰到其它编码的数据：
 
 ```python
@@ -1123,6 +1347,9 @@ Out[84]: b'e\x00s\x00p\x00a\x00\xf1\x00o\x00l\x00'
 
 工作中碰到的文件很多都是字节对象，盲目地将所有数据编码为Unicode是不可取的。
 
+---
+
+
 虽然用的不多，你可以在字节文本的前面加上一个b：
 
 ```python
@@ -1137,6 +1364,9 @@ In [88]: decoded  # this is str (Unicode) now
 Out[88]: 'this is bytes'
 ```
 
+---
+
+
 ### 布尔值
 
 Python中的布尔值有两个，True和False。比较和其它条件表达式可以用True和False判断。布尔值可以与and和or结合使用：
@@ -1149,9 +1379,15 @@ In [90]: False or True
 Out[90]: True
 ```
 
+---
+
+
 ### 类型转换
 
 str、bool、int和float也是函数，可以用来转换类型：
+
+---
+
 
 ```python
 In [91]: s = '3.14159'
@@ -1171,6 +1407,9 @@ In [96]: bool(0)
 Out[96]: False
 ```
 
+---
+
+
 ### None
 
 None是Python的空值类型。如果一个函数没有明确的返回值，就会默认返回None：
@@ -1186,6 +1425,9 @@ In [99]: b = 5
 In [100]: b is not None
 Out[100]: True
 ```
+
+---
+
 
 None也常常作为函数的默认参数：
 
@@ -1206,6 +1448,9 @@ In [101]: type(None)
 Out[101]: NoneType
 ```
 
+---
+
+
 ### 日期和时间
 
 Python内建的`datetime`模块提供了`datetime`、`date`和`time`类型。`datetime`类型结合了`date`和`time`，是最常使用的：
@@ -1221,6 +1466,9 @@ Out[104]: 29
 In [105]: dt.minute
 Out[105]: 30
 ```
+
+---
+
 
 根据`datetime`实例，你可以用`date`和`time`提取出各自的对象：
 
@@ -1239,6 +1487,9 @@ In [108]: dt.strftime('%m/%d/%Y %H:%M')
 Out[108]: '10/29/2011 20:30'
 ```
 
+---
+
+
 `strptime`可以将字符串转换成`datetime`对象：
 
 ```python
@@ -1246,9 +1497,15 @@ In [109]: datetime.strptime('20091031', '%Y%m%d')
 Out[109]: datetime.datetime(2009, 10, 31, 0, 0)
 ```
 
+---
+
+
 表2-5列出了所有的格式化命令。
 
 ![&#x8868;2-5 Datetime&#x683C;&#x5F0F;&#x5316;&#x6307;&#x4EE4;&#xFF08;&#x4E0E;ISO C89&#x517C;&#x5BB9;&#xFF09;](http://upload-images.jianshu.io/upload_images/7178691-100f9a20c1536553.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
+
+---
+
 
 当你聚类或对时间序列进行分组，替换datetimes的time字段有时会很有用。例如，用0替换分和秒：
 
@@ -1258,6 +1515,9 @@ Out[110]: datetime.datetime(2011, 10, 29, 20, 0)
 ```
 
 因为`datetime.datetime`是不可变类型，上面的方法会产生新的对象。
+
+---
+
 
 两个datetime对象的差会产生一个`datetime.timedelta`类型：
 
@@ -1275,6 +1535,9 @@ Out[114]: datetime.timedelta
 
 结果`timedelta(17, 7179)`指明了`timedelta`将17天、7179秒的编码方式。
 
+---
+
+
 将`timedelta`添加到`datetime`，会产生一个新的偏移`datetime`：
 
 ```python
@@ -1285,9 +1548,15 @@ In [116]: dt + delta
 Out[116]: datetime.datetime(2011, 11, 15, 22, 30)
 ```
 
+---
+
+
 ### 控制流
 
 Python有若干内建的关键字进行条件逻辑、循环和其它控制流操作。
+
+---
+
 
 ### if、elif和else
 
@@ -1297,6 +1566,9 @@ if是最广为人知的控制流语句。它检查一个条件，如果为True�
 if x < 0:
     print('It's negative')
 ```
+
+---
+
 
 `if`后面可以跟一个或多个`elif`，所有条件都是False时，还可以添加一个`else`：
 
@@ -1310,6 +1582,9 @@ elif 0 < x < 5:
 else:
     print('Positive and larger than or equal to 5')
 ```
+
+---
+
 
 如果某个条件为True，后面的`elif`就不会被执行。当使用and和or时，复合条件语句是从左到右执行：
 
@@ -1325,12 +1600,18 @@ Made it
 
 在这个例子中，`c > d`不会被执行，因为第一个比较是True：
 
+---
+
+
 也可以把比较式串在一起：
 
 ```python
 In [120]: 4 > 3 > 2 > 1
 Out[120]: True
 ```
+
+---
+
 
 ### for循环
 
@@ -1340,6 +1621,9 @@ for循环是在一个集合（列表或元组）中进行迭代，或者就是�
 for value in collection:
     # do something with value
 ```
+
+---
+
 
 你可以用continue使for循环提前，跳过剩下的部分。看下面这个例子，将一个列表中的整数相加，跳过None：
 
@@ -1352,6 +1636,9 @@ for value in sequence:
     total += value
 ```
 
+---
+
+
 可以用`break`跳出for循环。下面的代码将各元素相加，直到遇到5：
 
 ```python
@@ -1362,6 +1649,9 @@ for value in sequence:
         break
     total_until_5 += value
 ```
+
+---
+
 
 break只中断for循环的最内层，其余的for循环仍会运行：
 
@@ -1384,12 +1674,18 @@ In [121]: for i in range(4):
 (3, 3)
 ```
 
+---
+
+
 如果集合或迭代器中的元素序列（元组或列表），可以用for循环将其方便地拆分成变量：
 
 ```python
 for a, b, c in iterator:
     # do something
 ```
+
+---
+
 
 ### While循环
 
@@ -1405,6 +1701,9 @@ while x > 0:
     x = x // 2
 ```
 
+---
+
+
 ### pass
 
 pass是Python中的非操作语句。代码块不需要任何动作时可以使用（作为未执行代码的占位符）；因为Python需要使用空白字符划定代码块，所以需要pass：
@@ -1419,6 +1718,9 @@ else:
     print('positive!')
 ```
 
+---
+
+
 ### range
 
 range函数返回一个迭代器，它产生一个均匀分布的整数序列：
@@ -1431,6 +1733,9 @@ In [123]: list(range(10))
 Out[123]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
+---
+
+
 range的三个参数是（起点，终点，步进）：
 
 ```python
@@ -1441,6 +1746,9 @@ In [125]: list(range(5, 0, -1))
 Out[125]: [5, 4, 3, 2, 1]
 ```
 
+---
+
+
 可以看到，range产生的整数不包括终点。range的常见用法是用序号迭代序列：
 
 ```python
@@ -1448,6 +1756,9 @@ seq = [1, 2, 3, 4]
 for i in range(len(seq)):
     val = seq[i]
 ```
+
+---
+
 
 可以使用list来存储range在其他数据结构中生成的所有整数，默认的迭代器形式通常是你想要的。下面的代码对0到99999中3或5的倍数求和：
 
@@ -1460,6 +1771,9 @@ for i in range(100000):
 ```
 
 虽然range可以产生任意大的数，但任意时刻耗用的内存却很小。
+
+---
+
 
 ### 三元表达式
 
@@ -1477,6 +1791,9 @@ if condition:
 else:
     value = false-expr
 ```
+
+---
+
 
 下面是一个更具体的例子：
 
