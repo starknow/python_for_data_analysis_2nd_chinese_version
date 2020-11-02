@@ -4,7 +4,7 @@ _class: lead
 paginate: true
 backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.jpg')
-footer: 林肯叔叔
+footer: 林肯叔叔 @ www.shujudaka.com
 header: 
 ---
 
